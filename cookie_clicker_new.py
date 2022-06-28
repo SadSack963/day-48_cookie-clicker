@@ -56,7 +56,7 @@ for language in languages:
     if language.text == "English":
         language.click()
         break
-time.sleep(5)  # Allow time for pop-up menu to appear
+time.sleep(5)  # Allow time for screen to load
 
 
 # item_names = [   # ids altered
