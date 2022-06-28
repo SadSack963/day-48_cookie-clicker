@@ -22,7 +22,14 @@ def webdriver_init(browser: str = "chrome"):
     elif b == "firefox":
         from selenium.webdriver.firefox.service import Service as FirefoxService
         firefox_driver_path = "E:/Python/WebDriver/geckodriver.exe"
+        # See https://www.selenium.dev/documentation/webdriver/capabilities/
         # options = webdriver.FirefoxOptions()
+        # options.browser_version = '92'
+        # options.platform_name = 'Windows 10'
+        # cloud_options = {}
+        # cloud_options['build'] = my_test_build
+        # cloud_options['name'] = my_test_name
+        # options.set_capability('cloud:options', cloud_options)
         # options.add_experimental_option("excludeSwitches", ["enable-automation"])
         # options.add_experimental_option("useAutomationExtension", False)
         service = FirefoxService(executable_path=firefox_driver_path)
@@ -38,6 +45,19 @@ def webdriver_init(browser: str = "chrome"):
 driver = webdriver_init()
 # driver = webdriver_init("firefox")
 driver.get("https://orteil.dashnet.org/cookieclicker/")
+# driver.get("https://eli-schwartz.github.io/cookieclicker/")  # Alternative site
+
+# NEW Language Selection Menu
+# ===========================
+time.sleep(5)  # Allow time for pop-up menu to appear
+languages = driver.find_elements(by=By.CLASS_NAME, value='langSelectButton')
+for language in languages:
+    print(language.text)
+    if language.text == "English":
+        language.click()
+        break
+time.sleep(5)  # Allow time for pop-up menu to appear
+
 
 # item_names = [   # ids altered
 #     "Cursor",

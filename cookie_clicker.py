@@ -86,8 +86,9 @@ def buy_most_expensive_item():
 
 
 run_time = time.time_ns() + 300 * 10**9  # 5 minute run
-delay = 5.0  # Initial seconds
+delay = 1.0  # Initial seconds
 while run_time > time.time_ns():
     click_cookie(seconds=delay)
     buy_most_expensive_item()
+    delay *= 1.3
 driver.get_screenshot_as_file("screenshot.png")
